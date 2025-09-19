@@ -315,6 +315,78 @@
         .address a:hover {
             text-decoration: underline;
         }
+		
+		/* Modal Styles */
+		.modal {
+			display: none; 
+			position: fixed; 
+			z-index: 1; 
+			left: 0;
+			top: 0;
+			width: 100%; 
+			height: 100%; 
+			overflow: auto; 
+			background-color: rgba(0,0,0,0.4); 
+		}
+
+		.modal-content {
+			background-color: var(--white-color);
+			margin: 10% auto;
+			padding: 20px;
+			border: 1px solid var(--pastel-grey);
+			width: 80%;
+			max-width: 500px;
+			border-radius: 10px;
+			position: relative;
+		}
+
+		.close-button {
+			color: var(--secondary-color);
+			position: absolute;
+			top: 10px;
+			right: 20px;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close-button:hover,
+		.close-button:focus {
+			color: var(--dark-color);
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		/* Form Styles */
+		.modal-content h2 {
+			text-align: center;
+			color: var(--dark-color);
+		}
+
+		.form-group {
+			margin-bottom: 15px;
+		}
+
+		.form-group label {
+			display: block;
+			margin-bottom: 5px;
+			color: var(--secondary-color);
+		}
+
+		.form-group input,
+		.form-group textarea {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid var(--pastel-grey);
+			border-radius: 5px;
+			background-color: var(--light-color);
+			color: var(--dark-color);
+		}
+
+		.form-group input:focus,
+		.form-group textarea:focus {
+			outline: none;
+			border-color: var(--primary-color);
+		}
     </style>
 </head>
 <body>
@@ -333,7 +405,7 @@
                 <p>Smart. Simple. Savvy.</p>
                 <p>Transform your restaurant or cafe with AI agents that handle promotions, reservations, orders and customer service so you can focus on what you do the best.</p>
                 <a href="#agents" class="btn btn-primary">Explore Our Agents</a>
-                <a href="enquiry.html" class="btn btn-primary">Book a Demo</a>
+                <a href="#" class="btn btn-primary open-modal">Book a Demo</a>
             </div>
         </section>
 
@@ -455,7 +527,7 @@
                 <h2>Need a Custom Agent?</h2>
                 <p class="section-intro">We can build AI agents tailored to your specific business needs. From inventory management to customer loyalty programs.</p>
                 <div class="btn-group" style="text-align:center;">
-                    <a href="enquiry.html" class="btn btn-primary">Discuss Custom Solutions</a>
+                    <a href="#" class="btn btn-primary open-modal">Discuss Custom Solutions</a>
                 </div>
             </div>
         </section>
@@ -497,7 +569,7 @@
             <div class="container">
                 <h2>Start Your AI Journey</h2>
                 <p>Ready to see how 20 years of user experience expertise translates into AI that actually works for your business?</p>
-                <a href="enquiry.html" class="btn btn-primary">Book Your Free Consultation</a>
+                <a href="#" class="btn btn-primary open-modal">Book Your Free Consultation</a>
             </div>
         </section>
     </main>
@@ -518,5 +590,67 @@
             <p>Built with 20 years of software expertise and a passion for helping small businesses thrive.</p>
         </div>
     </footer>
+	
+	<div id="enquiryModal" class="modal">
+		<div class="modal-content">
+			<span class="close-button">&times;</span>
+			<h2>Customer Enquiry</h2>
+			<form action="submit_enquiry.php" method="post">
+				<div class="form-group">
+					<label for="customer-name">Customer Name *</label>
+					<input type="text" id="customer-name" name="customer-name" required>
+				</div>
+				<div class="form-group">
+					<label for="business-name">Business Name</label>
+					<input type="text" id="business-name" name="business-name">
+				</div>
+				<div class="form-group">
+					<label for="email">Email ID *</label>
+					<input type="email" id="email" name="email" required>
+				</div>
+				<div class="form-group">
+					<label for="contact-number">Contact Number *</label>
+					<input type="tel" id="contact-number" name="contact-number" required>
+				</div>
+				<div class="form-group">
+					<label for="message">Message</label>
+					<textarea id="message" name="message" rows="5"></textarea>
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+
+	<script>
+		// Get the modal
+		var modal = document.getElementById("enquiryModal");
+
+		// Get the button that opens the modal
+		var btns = document.querySelectorAll(".open-modal");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close-button")[0];
+
+		// When the user clicks on the button, open the modal
+		btns.forEach(function(btn) {
+			btn.onclick = function(event) {
+				event.preventDefault();
+				modal.style.display = "block";
+			}
+		});
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+
 </body>
 </html>
