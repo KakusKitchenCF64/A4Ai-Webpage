@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A4Ai - AI for Small Businesses | Smart. Simple. Savvy.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Pastel Color Palette */
+            --pastel-blue: #A7D7EF; /* Light Sky Blue */
+            --pastel-green: #C2E8C4; /* Mint Green */
+            --pastel-yellow: #FFF1BD; /* Pale Yellow */
+            --pastel-pink: #F7D7D7; /* Light Rose */
+            --pastel-grey: #ECEFF1; /* Light Grey Blue */
+            
+            --primary-color: var(--pastel-blue); /* Main accent color */
+            --secondary-color: #78909C; /* A slightly darker, muted grey for text */
+            --dark-color: #37474F; /* Dark blue-grey for main text/footer */
+            --light-color: var(--pastel-grey); /* Lightest background */
+            --white-color: #ffffff;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        header {
+            background: var(--white-color);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--pastel-grey);
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 2.5em;
+            margin: 0;
+            color: var(--dark-color);
+        }
+
+        .tagline {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-top: 5px;
+        }
+
+        .hero {
+            background: var(--primary-color);
+            color: var(--dark-color); /* Changed to dark for contrast on light pastel */
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: var(--dark-color); /* Ensure text is readable */
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            margin: 0 10px; /* Added margin for separation */
+        }
+
+        .btn-primary {
+            background-color: var(--dark-color); /* Darker button for contrast */
+            color: var(--white-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .trust-bar {
+            background: var(--white-color); /* Kept white for cleanliness */
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--pastel-grey);
+        }
+
+        .trust-bar span {
+            font-size: 1.1em;
+            color: var(--dark-color);
+            margin: 0 15px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--secondary-color);
+        }
+
+        .problem-list, .solution-list, .agent-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .problem-item, .solution-item, .agent-card {
+            background: var(--white-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 30%;
+            min-width: 280px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-item h3, .solution-item h3, .agent-card h3 {
+            color: var(--dark-color); /* Ensure headings are dark and readable */
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        /* Alternating pastel backgrounds for cards for more visual interest */
+        .problem-item:nth-child(1), .solution-item:nth-child(1), .agent-card:nth-child(1) { background-color: var(--white-color); }
+        .problem-item:nth-child(2), .solution-item:nth-child(2), .agent-card:nth-child(2) { background-color: var(--pastel-yellow); }
+        .problem-item:nth-child(3), .solution-item:nth-child(3), .agent-card:nth-child(3) { background-color: var(--pastel-pink); }
+        .agent-card:nth-child(4) { background-color: var(--pastel-green); } /* For the 4th agent card */
+
+
+        .agent-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section {
+            background: var(--dark-color);
+            color: var(--white-color);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .about-section h2 {
+            font-size: 2.5em;
+            color: var(--white-color);
+        }
+
+        .about-section p {
+            max-width: 800px;
+            margin: 20px auto;
+            font-size: 1.1em;
+            color: var(--pastel-grey);
+        }
+
+        .why-a4ai {
+            text-align: center;
+            padding: 60px 0;
+            background-color: var(--pastel-green); /* Another pastel background */
+            color: var(--dark-color);
+        }
+
+        .why-a4ai h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+        .why-a4ai p {
+            color: var(--secondary-color);
+        }
+
+        .agent-features ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .agent-features li {
+            background: rgba(255, 255, 255, 0.7); /* Slightly transparent white for features */
+            padding: 8px 15px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            color: var(--dark-color);
+        }
+
+        .agent-buttons {
+            margin-top: 20px;
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-color); /* Light pastel blue for secondary action */
+            color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--pastel-pink); /* Hover color */
+        }
+        
+        .btn-primary.disabled {
+            background-color: var(--secondary-color);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .insights-section {
+            background: var(--white-color);
+        }
+
+        .insights-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .insight-card {
+            background: var(--pastel-grey); /* Light pastel grey for insight cards */
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            min-width: 280px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            text-align: center;
+        }
+        
+        .insight-card h3 {
+            color: var(--dark-color);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .insight-card h4 {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .insight-card p {
+            color: var(--secondary-color);
+        }
+
+        .contact-section {
+            background: var(--dark-color);
+            color: var(--white-color);
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        .contact-section a {
+            background-color: var(--pastel-yellow); /* Bright pastel yellow for contrast */
+            color: var(--dark-color);
+            font-weight: bold;
+        }
+        .contact-section a:hover {
+            background-color: var(--white-color);
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: var(--pastel-grey); /* Lighter text for footer */
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #455A64; /* Slightly lighter dark color for border */
+        }
+
+        .footer-nav {
+            margin-bottom: 20px;
+        }
+
+        .footer-nav a {
+            color: var(--pastel-grey);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .address p {
+            margin: 5px 0;
+            color: var(--pastel-grey);
+        }
+        
+        .address a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .address a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>A4Ai</h1>
+            <p class="tagline">AI agents for Real World. Made Simple.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>AI for Small Businesses</h1>
+                <p>Smart. Simple. Savvy.</p>
+                <p>Transform your restaurant or cafe with AI agents that handle promotions, reservations, orders and customer service so you can focus on what you do the best.</p>
+                <a href="#agents" class="btn btn-primary">Explore Our Agents</a>
+                <a href="#contact" class="btn btn-primary">Book a Demo</a>
+            </div>
+        </section>
+
+        <section class="trust-bar">
+            <div class="container">
+                <span>20+ Years Experience</span>
+                <span>User-Friendly Design</span>
+                <span>Honest Team</span>
+                <span>Ready to incorporate your business needs</span>
+            </div>
+        </section>
+
+        <section class="section problems">
+            <div class="container">
+                <h2>The Problems Every Small Business Faces</h2>
+                <p class="section-intro">We understand your daily challenges because we've helped businesses just like yours.</p>
+                <div class="problem-list">
+                    <div class="problem-item">
+                        <h3>Overwhelmed by Phone Orders</h3>
+                        <p>Missing calls means lost revenue and frustrated customers. Up to 30% revenue loss.</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>Manual Reservation Management</h3>
+                        <p>Juggling booking systems while serving customers creates chaos. Customer dissatisfaction.</p>
+                    </div>
+                    <div class="problem-item">
+                        <h3>Limited Staff, Unlimited Demands</h3>
+                        <p>Your team can't be everywhere at once during peak hours. Burnout & mistakes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section solutions">
+            <div class="container">
+                <h2>Our AI Solutions </h2>
+                <p class="section-intro">Turn these challenges into competitive advantages.</p>
+                <div class="solution-list">
+                    <div class="solution-item">
+                        <h3>Effective Reservation System</h3>
+                        <p>Seamlessly manage bookings, send email confirmations, and handle changes automatically.</p>
+                    </div>
+					<div class="solution-item">
+                        <h3>24/7 AI Chatbot Assistant</h3>
+                        <p>Never miss an enquiry again. Our AI Chatbot keeps track of requests & store leads with contact details for you, even during rush hours.</p>
+                    </div>
+                    <div class="solution-item">
+                        <h3>Smart Customer Support</h3>
+                        <p>Answer questions, provide information, and resolve issues instantly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <div class="container">
+                <h2>20 Years of Crafting User-Friendly Software for Multinational companies</h2>
+				<h2>Now Applied to AI</h2>
+                <h3>The A4Ai Story</h3>
+                <p>For two decades, I've been obsessed with one thing: creating software that just works. At Siemens Mobile, Citi bank, MacAfee I spent years designing customer service interfaces that had to be intuitive enough for anyone to use under pressure.</p>
+                <p>That experience taught me something crucial: technology is only as good as its ability to solve real problems for real people. Today, I apply those same principles to AI. While others build complicated systems that require technical expertise, I create AI agents that feel as natural as having a conversation with your best employee.</p>
+            </div>
+        </section>
+
+        <section class="why-a4ai">
+            <div class="container">
+                <h3>Why "A4Ai"?</h3>
+                <p>The A4Ai represents our commitment to being For small businesses. We're not just another AI company—we're your dedicated technology partner.</p>
+                <h3>Our Philosophy</h3>
+                <p>AI should enhance your business, not complicate it. Every agent we build is designed with the end-user in mind—your customers AND your team.</p>
+            </div>
+        </section>
+
+        <section id="agents" class="section agents-section">
+            <div class="container">
+                <h2>Our AI Agents</h2>
+                <p class="section-intro">Pre-built solutions designed specifically for restaurants and cafes. Each agent solves a real problem and integrates seamlessly with your existing operations.</p>
+                <div class="agent-list">
+                    <div class="agent-card">
+                        <h3>Menu Master AI</h3>
+                        <p><strong>Solves:</strong> Customers calling with menu questions during busy hours.</p>
+                        <p>Instantly answers menu questions, dietary restrictions, ingredients, and availability. Works 24/7 so your staff can focus on cooking and serving.</p>
+                        <div class="agent-buttons">
+                            <a href="#" class="btn btn-primary disabled">Learn More</a>
+                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                        </div>
+                    </div>
+					<div class="agent-card">
+                        <h3>Customer Care Bot</h3>
+                        <p><strong>Solves:</strong> Repetitive customer service inquiries.</p>
+                        <p>Answers common questions about hours, location, policies, and services. Escalates complex issues to human staff when needed.</p>
+                        <div class="agent-buttons">
+                            <a href="#" class="btn btn-primary disabled">Learn More</a>
+                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                        </div>
+                    </div>
+                    <div class="agent-card">
+                        <h3>Reservation Genie</h3>
+                        <p><strong>Solves:</strong> Lost bookings and scheduling conflicts.</p>
+                        <p>Handles all reservations automatically, sends email confirmations, and even handles last-minute changes without any staff intervention.</p>
+                        <div class="agent-buttons">
+                            <a href="#" class="btn btn-primary disabled">Learn More</a>
+                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                        </div>
+                    </div>
+                    <div class="agent-card coming-soon">
+                        <h3>Order Wizard</h3>
+                        <p><strong>Solves:</strong> Missing phone orders during peak times.</p>
+                        <p>Takes phone orders with perfect accuracy, handles special requests, processes payments, and sends order confirmations. Never misses a call.</p>
+                        <div class="agent-buttons">
+						    <a href="#" class="btn btn-primary disabled">Coming Soon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section custom-agent">
+            <div class="container">
+                <h2>Need a Custom Agent?</h2>
+                <p class="section-intro">We can build AI agents tailored to your specific business needs. From inventory management to customer loyalty programs.</p>
+                <div class="btn-group" style="text-align:center;">
+                    <a href="#contact" class="btn btn-primary">Discuss Custom Solutions</a>
+                </div>
+            </div>
+        </section>
+
+<!--     <section class="section insights-section">
+            <div class="container">
+                <h2>AI Insights</h2>
+                <p class="section-intro">Practical guidance and real-world examples to help you understand how AI can work for your business. No hype, no jargon - just actionable insights.</p>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Getting Started</h3>
+                        <h4>5 Ways AI Can Transform Your Restaurant Today</h4>
+                        <p>Practical examples of AI implementation that deliver immediate results.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Business Impact</h3>
+                        <h4>The Real Cost of Missed Phone Calls</h4>
+                        <p>Calculate exactly how much revenue you're losing and how AI can help.</p>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Strategy</h3>
+                        <h4>AI vs. Human Staff: Finding the Perfect Balance</h4>
+                        <p>How to enhance your team with AI without replacing the human touch.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Education</h3>
+                        <h4>Small Business AI: Separating Hype from Reality</h4>
+                        <p>What actually works for restaurants and what's just marketing fluff.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+-->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2>Start Your AI Journey</h2>
+                <p>Ready to see how 20 years of user experience expertise translates into AI that actually works for your business?</p>
+                <a href="mailto:youremail@a4ai.com" class="btn btn-primary">Book Your Free Consultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-nav">
+                <a href="#agents">Solutions</a>
+                <a href="#">Resources</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="address">
+                <p>Greenway Close, LLandough, Penarth, Vale of Glamorgan, CF642LZ</p>
+                <p>Contact Number: 07956537877</p>
+                <p>LinkedIn: <a href="https://www.linkedin.com/in/pushp-kumar-0679515/" target="_blank">linkedin.com/in/pushp-kumar-0679515/</a></p>
+            </div>
+            <p>©2024 A4Ai. All rights reserved.</p>
+            <p>Built with 20 years of software expertise and a passion for helping small businesses thrive.</p>
+        </div>
+    </footer>
+</body>
+</html>
