@@ -387,6 +387,23 @@
 			outline: none;
 			border-color: var(--primary-color);
 		}
+		
+		.video-modal-content {
+            padding: 0;
+            max-width: 800px; /* Adjust as needed */
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -490,7 +507,8 @@
                         <p>Instantly answers menu questions, dietary restrictions, ingredients, and availability. Works 24/7 so your staff can focus on cooking and serving.</p>
                         <div class="agent-buttons">
                             <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+							<a href="#" class="btn btn-secondary open-video-modal" data-target="menuMasterModal">Watch Demo</a>
                         </div>
                     </div>
 					<div class="agent-card">
@@ -508,7 +526,8 @@
                         <p>Handles all reservations automatically, sends email confirmations, and even handles last-minute changes without any staff intervention.</p>
                         <div class="agent-buttons">
                             <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+							<a href="#" class="btn btn-secondary open-video-modal" data-target="bookingModal">Watch Demo</a>
                         </div>
                     </div>
                     <div class="agent-card coming-soon">
@@ -621,7 +640,30 @@
 		</div>
 	</div>
 
-	<script>
+<div id="menuMasterModal" class="modal">
+        <div class="modal-content video-modal-content">
+            <span class="close-button">&times;</span>
+            <div class="video-container">
+                <video id="menuMasterVideo" controls preload="none" style="width: 100%;">
+                    <source src="Menu_Master_Demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content video-modal-content">
+            <span class="close-button">&times;</span>
+            <div class="video-container">
+                <video id="bookingVideo" controls preload="none" style="width: 100%;">
+                    <source src="Tiffin_Booking_Demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+	<!--<script>
 		// Get the modal
 		var modal = document.getElementById("enquiryModal");
 
@@ -651,6 +693,71 @@
 			}
 		}
 	</script>
+	--!>
+	<script>
+        // Get the general enquiry modal
+        var enquiryModal = document.getElementById("enquiryModal");
+        var enquiryBtns = document.querySelectorAll(".open-modal");
+        var closeButtons = document.querySelectorAll(".close-button");
+
+        // Get the video modals
+        var menuMasterModal = document.getElementById("menuMasterModal");
+        var bookingModal = document.getElementById("bookingModal");
+        var videoBtns = document.querySelectorAll(".open-video-modal");
+
+        // When a user clicks a button to open the enquiry modal
+        enquiryBtns.forEach(function(btn) {
+            btn.onclick = function(event) {
+                event.preventDefault();
+                enquiryModal.style.display = "block";
+            }
+        });
+
+        // When a user clicks a button to open a video modal
+        videoBtns.forEach(function(btn) {
+            btn.onclick = function(event) {
+                event.preventDefault();
+                var targetId = btn.getAttribute("data-target");
+                var modal = document.getElementById(targetId);
+                var videoElement = modal.querySelector('video');
+
+                modal.style.display = "block";
+                if (videoElement) {
+                    videoElement.play();
+                }
+            }
+        });
+
+        // When a user clicks on <span> (x) to close any modal
+        closeButtons.forEach(function(btn) {
+            btn.onclick = function() {
+                var modal = btn.closest('.modal');
+                var videoElement = modal.querySelector('video');
+                modal.style.display = "none";
+                if (videoElement) {
+                    videoElement.pause();
+                    videoElement.currentTime = 0; // Rewind the video
+                }
+            }
+        });
+
+        // When the user clicks anywhere outside of a modal, close it
+        window.onclick = function(event) {
+            if (event.target === enquiryModal) {
+                enquiryModal.style.display = "none";
+            }
+            if (event.target === menuMasterModal) {
+                menuMasterModal.style.display = "none";
+                menuMasterVideo.pause();
+                menuMasterVideo.currentTime = 0;
+            }
+            if (event.target === bookingModal) {
+                bookingModal.style.display = "none";
+                bookingVideo.pause();
+                bookingVideo.currentTime = 0;
+            }
+        }
+    </script>
 
 </body>
 </html>
