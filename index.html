@@ -592,7 +592,27 @@
             </div>
         </section>
     </main>
+	
+  <!-- n8n Chat widget JS -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <!--<link rel="stylesheet" href="Flag.css">  -->
 
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+    createChat({
+      webhookUrl: "https://n8n-kakuskitchen.onrender.com/webhook/d50723ad-f886-4cbd-960a-545118fa0ffa/chat",
+      initialMessages: [
+        "I’d love to know — what brings you here, and what kind of business do you run?",
+      ],
+      i18n: {
+        en: {
+          title: "A4Ai welcomes you.",
+          subtitle: "We build smart AI Agents to help small businesses",
+          inputPlaceholder: "How can I help you?"
+        }
+      }
+    });
+  </script>
     <footer>
         <div class="container">
             <div class="footer-nav">
