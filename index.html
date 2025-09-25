@@ -634,7 +634,7 @@
 		<div class="modal-content">
 			<span class="close-button">&times;</span>
 			<h2>Customer Enquiry</h2>
-			<form action="submit_enquiry.php" method="post">
+			<form id="enquiryForm">
 				<div class="form-group">
 					<label for="customer-name">Customer Name *</label>
 					<input type="text" id="customer-name" name="customer-name" required>
@@ -781,6 +781,55 @@
                 bookingVideo.currentTime = 0;
             }
         }
+		
+		// Function to handle the form submission and send data to n8n
+        function handleFormSubmission(event) {
+        event.preventDefault(); // Stop the browser from submitting the form (and refreshing the page)
+
+        const form = document.getElementById('enquiryForm');
+        const webhookUrl = 'https://n8n-kakuskitchen.onrender.com/webhook/843b9e74-2629-4042-b60c-72cf20b32025'; // <-- PASTE YOUR N8N WEBHOOK URL HERE
+
+           // Get form data
+           const formData = {
+           'customer_name': document.getElementById('customer-name').value,
+           'business_name': document.getElementById('business-name').value,
+           'email': document.getElementById('email').value,
+           'contact_number': document.getElementById('contact-number').value,
+           'message': document.getElementById('message').value
+            };
+
+           // Send data to n8n webhook
+           fetch(webhookUrl, {
+           method: 'POST',
+           headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+       })
+       .then(response => {
+        if (response.ok) {
+            alert('Your enquiry has been submitted successfully! We will be in touch shortly.');
+            form.reset(); // Clear the form
+            // Optional: Close the modal
+            document.getElementById("enquiryModal").style.display = "none";
+        } else {
+            alert('There was an error submitting your enquiry. Please try again.');
+        }
+        })
+          .catch(error => {
+           console.error('Submission error:', error);
+           alert('An unexpected error occurred. Please check your connection.');
+           });
+        }
+
+    // Add event listener to the form after all other setup
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('enquiryForm');
+    if (form) {
+        form.addEventListener('submit', handleFormSubmission);
+    }
+    });
+		
     </script>
 
 </body>
