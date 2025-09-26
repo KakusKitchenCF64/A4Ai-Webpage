@@ -558,8 +558,8 @@
                         <p><strong>Solves:</strong> Repetitive customer service inquiries.</p>
                         <p>Answers common questions about hours, location, policies, and services. Escalates complex issues to human staff when needed.</p>
                         <div class="agent-buttons">
-                            <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <a href="#" class="btn btn-secondary">Watch Demo</a>
+                            <a href="#" class="btn btn-primary open-info-modal" data-target="customerCareInfoModal">Learn More</a>
+                            <a href="#" class="btn btn-secondary open-video-modal" data-target="customerCareModal">Watch Demo</a>
                         </div>
                     </div>
                     <div class="agent-card">
@@ -792,6 +792,54 @@
     </div>
 </div>
 
+    <div id="customerCareModal" class="modal">
+        <div class="modal-content video-modal-content">
+            <span class="close-button">&times;</span>
+            <div class="video-container">
+                <video id="customerCareVideo" controls preload="none" style="width: 100%;">
+                    <source src="A4Ai_chatbot_Demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+	
+	<div id="customerCareInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>🤖 Customer Service Chatbot</h2>
+        
+        <div class="agent-info-content">
+            <h3>A smart, reliable chatbot that responds only based on your company’s documents</h3>
+            <p><strong>The Challenge:</strong> Responds only to what’s in your documents.</p>
+            
+            <p><strong>🌟 Key Highlights</strong></p>
+			<p><strong>🍱 Customer-Friendly Booking</strong></p>
+            <ul>
+			    <li><strong>💬 User-Friendly & Readable Answers: </strong> Customers get clear, concise, and easy-to-read responses.</li>
+                <li><strong>📚 Document-Aware Responses: </strong> no guessing or made-up answers.</li>
+				<li><strong>🛠️ Fully Customisable:</strong>the chatbot’s tone, appearance, and integration to match your website’s brand and style.</li>
+                <li><strong>🚫 No Hallucination: </strong> “I don’t have this information. Please contact the company at [email / phone].”</li>
+            </ul>
+
+			<p><strong>🛡️ Built for Business</strong></p>
+            <ul>
+                <li><strong>🌐 Seamless Website Integration</strong> Add it to your existing website without major changes.</li>
+                <li><strong>🔒 Data Security Assured:</strong> Each agent runs on its own CPU & memory, so your customer data stays private.</li>
+            </ul>
+            
+            
+            <p style="margin-top: 25px; padding: 15px; border-radius: 5px; background: var(--pastel-yellow);">
+                <strong>About the Demo:</strong> ✨ In this demo,when a visitor asks a typical product or policy question, the bot answers instantly using the company’s own documents. If the visitor asks about the company owner — information not covered in the documents — the bot politely responds, “I don’t have this information. Please contact the company at [email / phone].” This demo highlights how the chatbot remains accurate, secure, and professional at all times.			
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="launchCustomerCareDemo" class="btn btn-primary">Proceed to Demo</button>
+            </div>
+        </div>
+    </div>
+</div>
+	
 	<script>
         // Get the general enquiry modal
         var enquiryModal = document.getElementById("enquiryModal");
@@ -801,11 +849,13 @@
         // Get the video modals
         var menuMasterModal = document.getElementById("menuMasterModal");
         var bookingModal = document.getElementById("bookingModal");
+		var customerCareModal = document.getElementById("customerCareModal");
         var videoBtns = document.querySelectorAll(".open-video-modal");
 		
 		// ✅ Add video element references
         var menuMasterVideo = document.getElementById("menuMasterVideo");
         var bookingVideo = document.getElementById("bookingVideo");
+		var customerCareVideo = document.getElementById("customerCareVideo");
 
         // When a user clicks a button to open the enquiry modal
         enquiryBtns.forEach(function(btn) {
@@ -858,6 +908,11 @@
                 bookingVideo.pause();
                 bookingVideo.currentTime = 0;
             }
+			if (event.target === customerCareModal) {
+                customerCareModal.style.display = "none";
+                customerCareVideo.pause();
+                customerCareVideo.currentTime = 0;
+            }
         }
 		// --- NEW INFO MODAL LOGIC ---
 
@@ -895,6 +950,21 @@
         // 2. Open the Video Demo Modal and play the video (using existing logic)
         var videoModal = document.getElementById('bookingModal');
         var videoElement = document.getElementById('bookingVideo');
+
+        videoModal.style.display = 'block';
+        if (videoElement) {
+        videoElement.play();
+          }
+        };
+		
+	    // Logic to transition from the Info Modal to the Video Demo Modal
+        document.getElementById('launchCustomerCareDemo').onclick = function() {
+         // 1. Close the Info Modal
+        document.getElementById('customerCareInfoModal').style.display = 'none';
+
+        // 2. Open the Video Demo Modal and play the video (using existing logic)
+        var videoModal = document.getElementById('customerCareModal');
+        var videoElement = document.getElementById('customerCareVideo');
 
         videoModal.style.display = 'block';
         if (videoElement) {
