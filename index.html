@@ -580,7 +580,8 @@
             </div>
         </section>
 
-<!--     <section class="section insights-section">
+<!--     May be required later to engage customers with third party videos or links
+        <section class="section insights-section">
             <div class="container">
                 <h2>AI Insights</h2>
                 <p class="section-intro">Practical guidance and real-world examples to help you understand how AI can work for your business. No hype, no jargon - just actionable insights.</p>
@@ -624,12 +625,11 @@
 	
   <!-- n8n Chat widget JS -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-  <!--<link rel="stylesheet" href="Flag.css">  -->
 
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
     createChat({
-      webhookUrl: "https://n8n-kakuskitchen.onrender.com/webhook/d50723ad-f886-4cbd-960a-545118fa0ffa/chat",
+      webhookUrl: "https://n8n-kakuskitchen.onrender.com/webhook/d50723ad-f886-4cbd-960a-545118fa0ffa/chat",  <!--N8n webhook Url for chatbot -->
       initialMessages: [
         "I’d love to know — what brings you here, and what kind of business do you run?",
       ],
@@ -712,37 +712,7 @@
             </div>
         </div>
     </div>
-	<!--<script>
-		// Get the modal
-		var modal = document.getElementById("enquiryModal");
 
-		// Get the button that opens the modal
-		var btns = document.querySelectorAll(".open-modal");
-
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close-button")[0];
-
-		// When the user clicks on the button, open the modal
-		btns.forEach(function(btn) {
-			btn.onclick = function(event) {
-				event.preventDefault();
-				modal.style.display = "block";
-			}
-		});
-
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-			modal.style.display = "none";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
-	--!>
 	<script>
         // Get the general enquiry modal
         var enquiryModal = document.getElementById("enquiryModal");
@@ -816,7 +786,7 @@
         event.preventDefault(); // Stop the browser from submitting the form (and refreshing the page)
 
         const form = document.getElementById('enquiryForm');
-        const webhookUrl = 'https://n8n-kakuskitchen.onrender.com/webhook/843b9e74-2629-4042-b60c-72cf20b32025'; // <-- PASTE YOUR N8N WEBHOOK URL HERE
+        const webhookUrl = 'https://n8n-kakuskitchen.onrender.com/webhook/843b9e74-2629-4042-b60c-72cf20b32025'; // <-- N8N WEBHOOK URL to submit enqiry Form
 
            // Get form data
            const formData = {
