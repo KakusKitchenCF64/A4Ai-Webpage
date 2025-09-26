@@ -440,7 +440,7 @@
     <header>
         <div class="logo">
             <h1>A4Ai</h1>
-            <p class="tagline">AI agents for Real World. Made Simple.</p>
+            <p class="tagline">AI is Here. Let's Embrace it.</p>
         </div>
     </header>
 
@@ -535,8 +535,7 @@
                         <p><strong>Solves:</strong> Customers calling with menu questions during busy hours.</p>
                         <p>Instantly answers menu questions, dietary restrictions, ingredients, and availability. Works 24/7 so your staff can focus on cooking and serving.</p>
                         <div class="agent-buttons">
-                            <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+                            <a href="#" class="btn btn-primary open-info-modal" data-target="menuMasterInfoModal">Learn More</a>
 							<a href="#" class="btn btn-secondary open-video-modal" data-target="menuMasterModal">Watch Demo</a>
                         </div>
                     </div>
@@ -689,7 +688,7 @@
 		</div>
 	</div>
 
-<div id="menuMasterModal" class="modal">
+    <div id="menuMasterModal" class="modal">
         <div class="modal-content video-modal-content">
             <span class="close-button">&times;</span>
             <div class="video-container">
@@ -700,6 +699,46 @@
             </div>
         </div>
     </div>
+	
+	<div id="menuMasterInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>Menu Master AI: Detailed Overview</h2>
+        
+        <div class="agent-info-content">
+            <h3>Features & Problem Solved</h3>
+            <p><strong>The Challenge:</strong> During peak hours, your Restaurant staff is often interrupted by phone calls asking simple menu questions, dietary restrictions. This causes delays, frustration, and can lead to lost orders.</p>
+            
+            <p><strong>Key Features: ✨For Restaurant Customers</strong></p>
+            <ul>
+                <li><strong>🔎 Easy Queries: </strong> Customers can ask questions naturally — the chatbot remembers the full menu.</li>
+				<li><strong>24/7 Inquiry Handling:</strong> Instantly answers customer questions about your entire menu, even when you're closed.</li>
+                <li><strong>🍽️ Smart Menu Search:</strong> Instantly find Vegan, Vegetarian, Nut-Free, Allergen-Free, Starters, Desserts & more.</li>
+				<li><strong>🥜 Dietary/Allergy Information:</strong> Provides accurate, reliable information on ingredients and allergens directly from your menu data.</li>
+                <li><strong>💡 Personalised Meal Suggestions:</strong> Ask for a 2- or 3-course meal under £15 or even a meal under 500 calories.</li>
+            </ul>
+			
+			<p><strong>Key Features: 🚀 For Restaurant Owners</strong></p>
+            <ul>
+                <li><strong>🌐 Seamless Website Integration: </strong> Add the chatbot to any existing website — no redesign needed.</li>
+				<li><strong>🎨 Brand-Matched Look:</strong>We customise the chatbot to match your restaurant’s colours and style.</li>
+                <li><strong>📜 Hassle-Free Setup:</strong> All we need is your existing menu to get started.</li>
+				<li><strong>⚡ Fast Deployment:</strong> Your menu chatbot goes live in just 48 hours.</li>
+                <li><strong>🔒 Dedicated Resources:</strong> Each restaurant gets its own CPU & memory, ensuring privacy and data security.</li>
+                <li><strong>🧑‍🍳Staff Empowerment:</strong> Frees your human staff to focus entirely on in-person service and high-priority tasks.</li>
+            </ul>
+            
+            
+            <p style="margin-top: 25px; padding: 15px; border-radius: 5px; background: var(--pastel-yellow);">
+                <strong>About the Demo:</strong> The demo you are about to see will show the Menu Master AI answering customer questions in seconds. You will see how it handles a request for nut-free dessert, 2-course meal suggestion.
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="launchMenuMasterDemo" class="btn btn-primary">Proceed to Demo</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div id="bookingModal" class="modal">
         <div class="modal-content video-modal-content">
@@ -780,7 +819,33 @@
                 bookingVideo.currentTime = 0;
             }
         }
+		// --- NEW INFO MODAL LOGIC ---
+
+        // Get the new button type for opening info modals
+        var infoBtns = document.querySelectorAll(".open-info-modal");
+
+        infoBtns.forEach(function(btn) {
+        btn.onclick = function(event) {
+        event.preventDefault();
+        var targetId = btn.getAttribute("data-target");
+        document.getElementById(targetId).style.display = "block";
+          }
+        });
 		
+		// Logic to transition from the Info Modal to the Video Demo Modal
+        document.getElementById('launchMenuMasterDemo').onclick = function() {
+         // 1. Close the Info Modal
+        document.getElementById('menuMasterInfoModal').style.display = 'none';
+
+        // 2. Open the Video Demo Modal and play the video (using existing logic)
+        var videoModal = document.getElementById('menuMasterModal');
+        var videoElement = document.getElementById('menuMasterVideo');
+
+        videoModal.style.display = 'block';
+        if (videoElement) {
+        videoElement.play();
+          }
+        };
 		// Function to handle the form submission and send data to n8n
         function handleFormSubmission(event) {
         event.preventDefault(); // Stop the browser from submitting the form (and refreshing the page)
