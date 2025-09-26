@@ -553,8 +553,7 @@
                         <p><strong>Solves:</strong> Lost bookings and scheduling conflicts.</p>
                         <p>Handles all reservations automatically, sends email confirmations, and even handles last-minute changes without any staff intervention.</p>
                         <div class="agent-buttons">
-                            <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+							<a href="#" class="btn btn-primary open-info-modal" data-target="bookingInfoModal">Learn More</a>
 							<a href="#" class="btn btn-secondary open-video-modal" data-target="bookingModal">Watch Demo</a>
                         </div>
                     </div>
@@ -709,7 +708,8 @@
             <h3>Features & Problem Solved</h3>
             <p><strong>The Challenge:</strong> During peak hours, your Restaurant staff is often interrupted by phone calls asking simple menu questions, dietary restrictions. This causes delays, frustration, and can lead to lost orders.</p>
             
-            <p><strong>Key Features: ✨For Restaurant Customers</strong></p>
+            <p><strong>Key Features:</strong></p>
+			<p><strong>✨For Restaurant Customers</strong></p>
             <ul>
                 <li><strong>🔎 Easy Queries: </strong> Customers can ask questions naturally — the chatbot remembers the full menu.</li>
 				<li><strong>24/7 Inquiry Handling:</strong> Instantly answers customer questions about your entire menu, even when you're closed.</li>
@@ -718,7 +718,7 @@
                 <li><strong>💡 Personalised Meal Suggestions:</strong> Ask for a 2- or 3-course meal under £15 or even a meal under 500 calories.</li>
             </ul>
 			
-			<p><strong>Key Features: 🚀 For Restaurant Owners</strong></p>
+			<p><strong>🚀 For Restaurant Owners</strong></p>
             <ul>
                 <li><strong>🌐 Seamless Website Integration: </strong> Add the chatbot to any existing website — no redesign needed.</li>
 				<li><strong>🎨 Brand-Matched Look:</strong>We customise the chatbot to match your restaurant’s colours and style.</li>
@@ -751,6 +751,51 @@
             </div>
         </div>
     </div>
+	
+    <div id="bookingInfoModal" class="modal">
+    <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2>⭐Custom-Made Booking Agent</h2>
+        
+        <div class="agent-info-content">
+            <h3>Tiffin-Booking Agent</h3>
+            <p><strong>The Challenge:</strong> Designed specifically to match your takeaway’s booking rules — showing that we build agents to fit your needs.</p>
+            
+            <p><strong>Key Features:</strong></p>
+			<p><strong>🍱 Customer-Friendly Booking</strong></p>
+            <ul>
+                <li><strong>📅 Day-Aware Booking: </strong> Accepts bookings only for Mon–Fri.</li>
+				<li><strong>⏳ 24-Hour Advance Notice:</strong></li>
+				<li>If today is Monday → book Tue–Fri only</li>
+				<li>If today is Wednesday → book Thu & Fri only</li>
+				<li>Other days stay disabled automatically.</li>
+                <li><strong>📝 Easy Booking Form: </strong> Customers share name, email, phone & special instructions (e.g., “make it less spicy”).</li>
+            </ul>
+			<p><strong>📧 Instant Communication</strong></p>
+			<ul>
+			<li><strong>✉️ Auto Email Confirmation:</strong>for both Customer & Takeaway.</li>
+			<li><strong>💳 Payment Details Included</strong>in the customer’s confirmation email.</li>
+			</ul>
+			<p><strong>🛡️ Built for Business</strong></p>
+            <ul>
+                <li><strong>⚙️ Custom-Made for You: </strong> This agent was designed to meet one takeaway’s specific rules — we can do the same for your unique needs.</li>
+				<li><strong>🌐 Easy Integration:</strong>Add to your existing website in no time.</li>
+                <li><strong>📜 Hassle-Free Setup:</strong> All we need is your existing menu to get started.</li>
+				<li><strong>🎨 Brand-Matched Design:</strong> We style it to fit your site’s look and feel.</li>
+                <li><strong>🔒 Data Security Assured:</strong> Each agent runs on its own CPU & memory, so your customer data stays private.</li>
+            </ul>
+            
+            
+            <p style="margin-top: 25px; padding: 15px; border-radius: 5px; background: var(--pastel-yellow);">
+                <strong>About the Demo:</strong> ✨ In this demo, we’ll show you how easy it is for a customer to book a meal using our Tiffin-Booking Agent. You’ll see the simple step-by-step booking process and how quickly a confirmation email is sent to both the customer and the takeaway. It’s a smooth, hassle-free experience that shows the power of our custom-built agents.			
+            </p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <button id="launchBookingDemo" class="btn btn-primary">Proceed to Demo</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 	<script>
         // Get the general enquiry modal
@@ -846,6 +891,22 @@
         videoElement.play();
           }
         };
+		
+	    // Logic to transition from the Info Modal to the Video Demo Modal
+        document.getElementById('launchBookingDemo').onclick = function() {
+         // 1. Close the Info Modal
+        document.getElementById('bookingInfoModal').style.display = 'none';
+
+        // 2. Open the Video Demo Modal and play the video (using existing logic)
+        var videoModal = document.getElementById('bookingModal');
+        var videoElement = document.getElementById('bookingVideo');
+
+        videoModal.style.display = 'block';
+        if (videoElement) {
+        videoElement.play();
+          }
+        };
+		
 		// Function to handle the form submission and send data to n8n
         function handleFormSubmission(event) {
         event.preventDefault(); // Stop the browser from submitting the form (and refreshing the page)
