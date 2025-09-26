@@ -427,6 +427,20 @@
             width: 100%;
             height: 100%;
         }
+        
+        /* --- Mobile Specific Button Spacing Fix --- */
+        @media (max-width: 600px) {
+            .agent-buttons .btn {
+                /* Forces buttons to stack and take full width on mobile */
+                display: block; 
+                width: 100%;
+                /* Adds vertical spacing between stacked buttons */
+                margin: 5px 0; 
+            }
+            .agent-buttons {
+                padding: 10px 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -451,7 +465,7 @@
                 <p>Smart. Simple. Savvy.</p>
                 <p>Transform your restaurant or cafe with AI agents that handle promotions, reservations, orders and customer service so you can focus on what you do the best.</p>
                 <a href="#agents" class="btn btn-primary">Explore Our Agents</a>
-                <a href="#" class="btn btn-primary open-modal">Book a Demo</a>
+                <!--<a href="#" class="btn btn-primary open-modal">Book a Demo</a>-->
             </div>
         </section>
 
@@ -621,25 +635,6 @@
         </section>
     </main>
 	
-  <!-- n8n Chat widget JS -->
-  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
-
-  <script type="module">
-    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
-    createChat({
-      webhookUrl: "https://n8n-kakuskitchen.onrender.com/webhook/d50723ad-f886-4cbd-960a-545118fa0ffa/chat",  <!--N8n webhook Url for chatbot -->
-      initialMessages: [
-        "I’d love to know — what brings you here, and what kind of business do you run?",
-      ],
-      i18n: {
-        en: {
-          title: "A4Ai welcomes you.",
-          subtitle: "We build smart AI Agents to help small businesses",
-          inputPlaceholder: "How can I help you?"
-        }
-      }
-    });
-  </script>
     <footer>
         <div class="container">
             <div class="footer-nav">
@@ -955,6 +950,24 @@
     }
     });
 		
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+
+    <script type="module">
+        import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+        createChat({
+            webhookUrl: "https://n8n-kakuskitchen.onrender.com/webhook/d50723ad-f886-4cbd-960a-545118fa0ffa/chat",  initialMessages: [
+                "I’d love to know — what brings you here, and what kind of business do you run?",
+            ],
+            i18n: {
+                en: {
+                    title: "A4Ai welcomes you.",
+                    subtitle: "We build smart AI Agents to help small businesses",
+                    inputPlaceholder: "How can I help you?"
+                }
+            }
+        });
     </script>
 
 </body>
