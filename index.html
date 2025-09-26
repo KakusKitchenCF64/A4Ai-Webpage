@@ -536,7 +536,8 @@
                         <p>Instantly answers menu questions, dietary restrictions, ingredients, and availability. Works 24/7 so your staff can focus on cooking and serving.</p>
                         <div class="agent-buttons">
                             <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <a href="#" class="btn btn-secondary open-video-modal" data-target="menuMasterModal">Watch Demo</a>
+                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+							<a href="#" class="btn btn-secondary open-video-modal" data-target="menuMasterModal">Watch Demo</a>
                         </div>
                     </div>
 					<div class="agent-card">
@@ -554,7 +555,8 @@
                         <p>Handles all reservations automatically, sends email confirmations, and even handles last-minute changes without any staff intervention.</p>
                         <div class="agent-buttons">
                             <a href="#" class="btn btn-primary disabled">Learn More</a>
-                            <a href="#" class="btn btn-secondary open-video-modal" data-target="bookingModal">Watch Demo</a>
+                            <!--<a href="#" class="btn btn-secondary">Watch Demo</a>-->
+							<a href="#" class="btn btn-secondary open-video-modal" data-target="bookingModal">Watch Demo</a>
                         </div>
                     </div>
                     <div class="agent-card coming-soon">
@@ -578,7 +580,40 @@
             </div>
         </section>
 
-<section id="contact" class="contact-section">
+<!--     <section class="section insights-section">
+            <div class="container">
+                <h2>AI Insights</h2>
+                <p class="section-intro">Practical guidance and real-world examples to help you understand how AI can work for your business. No hype, no jargon - just actionable insights.</p>
+                <div class="insights-grid">
+                    <div class="insight-card">
+                        <h3>Getting Started</h3>
+                        <h4>5 Ways AI Can Transform Your Restaurant Today</h4>
+                        <p>Practical examples of AI implementation that deliver immediate results.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Business Impact</h3>
+                        <h4>The Real Cost of Missed Phone Calls</h4>
+                        <p>Calculate exactly how much revenue you're losing and how AI can help.</p>
+                        <p>Coming Soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Strategy</h3>
+                        <h4>AI vs. Human Staff: Finding the Perfect Balance</h4>
+                        <p>How to enhance your team with AI without replacing the human touch.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                    <div class="insight-card">
+                        <h3>Education</h3>
+                        <h4>Small Business AI: Separating Hype from Reality</h4>
+                        <p>What actually works for restaurants and what's just marketing fluff.</p>
+                        <p>Video Preview<br>Available soon</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+-->
+        <section id="contact" class="contact-section">
             <div class="container">
                 <h2>Start Your AI Journey</h2>
                 <p>Ready to see how 20 years of user experience expertise translates into AI that actually works for your business?</p>
@@ -587,7 +622,10 @@
         </section>
     </main>
 	
+  <!-- n8n Chat widget JS -->
   <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+  <!--<link rel="stylesheet" href="Flag.css">  -->
+
   <script type="module">
     import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
     createChat({
@@ -674,3 +712,154 @@
             </div>
         </div>
     </div>
+	<!--<script>
+		// Get the modal
+		var modal = document.getElementById("enquiryModal");
+
+		// Get the button that opens the modal
+		var btns = document.querySelectorAll(".open-modal");
+
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close-button")[0];
+
+		// When the user clicks on the button, open the modal
+		btns.forEach(function(btn) {
+			btn.onclick = function(event) {
+				event.preventDefault();
+				modal.style.display = "block";
+			}
+		});
+
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+			modal.style.display = "none";
+		}
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+			if (event.target == modal) {
+				modal.style.display = "none";
+			}
+		}
+	</script>
+	--!>
+	<script>
+        // Get the general enquiry modal
+        var enquiryModal = document.getElementById("enquiryModal");
+        var enquiryBtns = document.querySelectorAll(".open-modal");
+        var closeButtons = document.querySelectorAll(".close-button");
+
+        // Get the video modals
+        var menuMasterModal = document.getElementById("menuMasterModal");
+        var bookingModal = document.getElementById("bookingModal");
+        var videoBtns = document.querySelectorAll(".open-video-modal");
+		
+		// ✅ Add video element references
+        var menuMasterVideo = document.getElementById("menuMasterVideo");
+        var bookingVideo = document.getElementById("bookingVideo");
+
+        // When a user clicks a button to open the enquiry modal
+        enquiryBtns.forEach(function(btn) {
+            btn.onclick = function(event) {
+                event.preventDefault();
+                enquiryModal.style.display = "block";
+            }
+        });
+
+        // When a user clicks a button to open a video modal
+        videoBtns.forEach(function(btn) {
+            btn.onclick = function(event) {
+                event.preventDefault();
+                var targetId = btn.getAttribute("data-target");
+                var modal = document.getElementById(targetId);
+                var videoElement = modal.querySelector('video');
+
+                modal.style.display = "block";
+                if (videoElement) {
+                    videoElement.play();
+                }
+            }
+        });
+
+        // When a user clicks on <span> (x) to close any modal
+        closeButtons.forEach(function(btn) {
+            btn.onclick = function() {
+                var modal = btn.closest('.modal');
+                var videoElement = modal.querySelector('video');
+                modal.style.display = "none";
+                if (videoElement) {
+                    videoElement.pause();
+                    videoElement.currentTime = 0; // Rewind the video
+                }
+            }
+        });
+
+        // When the user clicks anywhere outside of a modal, close it
+        window.onclick = function(event) {
+            if (event.target === enquiryModal) {
+                enquiryModal.style.display = "none";
+            }
+            if (event.target === menuMasterModal) {
+                menuMasterModal.style.display = "none";
+                menuMasterVideo.pause();
+                menuMasterVideo.currentTime = 0;
+            }
+            if (event.target === bookingModal) {
+                bookingModal.style.display = "none";
+                bookingVideo.pause();
+                bookingVideo.currentTime = 0;
+            }
+        }
+		
+		// Function to handle the form submission and send data to n8n
+        function handleFormSubmission(event) {
+        event.preventDefault(); // Stop the browser from submitting the form (and refreshing the page)
+
+        const form = document.getElementById('enquiryForm');
+        const webhookUrl = 'https://n8n-kakuskitchen.onrender.com/webhook/843b9e74-2629-4042-b60c-72cf20b32025'; // <-- PASTE YOUR N8N WEBHOOK URL HERE
+
+           // Get form data
+           const formData = {
+           'customer_name': document.getElementById('customer-name').value,
+           'business_name': document.getElementById('business-name').value,
+           'email': document.getElementById('email').value,
+           'contact_number': document.getElementById('contact-number').value,
+           'message': document.getElementById('message').value
+            };
+
+           // Send data to n8n webhook
+           fetch(webhookUrl, {
+           method: 'POST',
+           headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+       })
+       .then(response => {
+        if (response.ok) {
+            alert('Your enquiry has been submitted successfully! We will be in touch shortly.');
+            form.reset(); // Clear the form
+            // Optional: Close the modal
+            document.getElementById("enquiryModal").style.display = "none";
+        } else {
+            alert('There was an error submitting your enquiry. Please try again.');
+        }
+        })
+          .catch(error => {
+           console.error('Submission error:', error);
+           alert('An unexpected error occurred. Please check your connection.');
+           });
+        }
+
+    // Add event listener to the form after all other setup
+    document.addEventListener('DOMContentLoaded', (event) => {
+    const form = document.getElementById('enquiryForm');
+    if (form) {
+        form.addEventListener('submit', handleFormSubmission);
+    }
+    });
+		
+    </script>
+
+</body>
+</html>
